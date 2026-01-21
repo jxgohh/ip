@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Ultron {
     private final static String LINE = "------------------------------------------------";
-    private static ArrayList<String> list = new ArrayList<>();
+    private static ArrayList<Task> list = new ArrayList<>();
 
     private static void greet() {
         System.out.println(LINE);
@@ -16,12 +16,31 @@ public class Ultron {
         System.out.println(LINE);
     }
 
-    private static void append(String str) {
-         list.add(str);
+    private static void append(Task t) {
+         list.add(t);
+    }
+
+    private static void mark(int ind) {
+        System.out.println(LINE);
+        System.out.println("Nice! I've marked this task as done:");
+        Task currTask = list.get(ind-1);
+        currTask.mark();
+        System.out.println(currTask);
+        System.out.println(LINE);
+    }
+
+    private static void unmark(int ind) {
+        System.out.println(LINE);
+        System.out.println("OK, I've marked this task as not done yet:");
+        Task currTask = list.get(ind-1);
+        currTask.unmark();
+        System.out.println(currTask);
+        System.out.println(LINE);
     }
 
     private static void printList() {
         System.out.println(LINE);
+        System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < list.size(); i++) {
             String idStr = Integer.toString(i+1);
             System.out.println(idStr + ". " + list.get(i));
@@ -34,13 +53,22 @@ public class Ultron {
         greet();
         while (true) {
             String line = sc.nextLine();
-            if (line.equals("bye")) {
+            Scanner splitter = new Scanner(line);
+            String action = splitter.next();
+            if (action.equals("bye")) {
                 goodbye();
                 break;
-            } else if (line.equals("list")) {
+            } else if (action.equals("list")) {
                 printList();
+            } else if (action.equals("mark")) {
+                int ind = splitter.nextInt();
+                mark(ind);
+            } else if (action.equals("unmark")) {
+                int ind = splitter.nextInt();
+                unmark(ind);
             } else {
-                append(line);
+                Task t = new Task(line);
+                append(t);
                 System.out.println(LINE);
                 System.out.println("added: " + line);
                 System.out.println(LINE);
