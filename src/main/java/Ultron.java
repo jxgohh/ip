@@ -66,11 +66,51 @@ public class Ultron {
             } else if (action.equals("unmark")) {
                 int ind = splitter.nextInt();
                 unmark(ind);
-            } else {
-                Task t = new Task(line);
-                append(t);
+            } else if (action.equals("todo")) {
                 System.out.println(LINE);
-                System.out.println("added: " + line);
+                String task = splitter.nextLine().trim();
+                Task newTask = new Todo(task);
+                append(newTask);
+                System.out.println("Got it. I've added this task:");
+                System.out.println("    " + newTask);
+                System.out.println("Now you have " + list.size() + " tasks in the list");
+                System.out.println(LINE);
+            } else if (action.equals("deadline")) {
+                System.out.println(LINE);
+                String task = splitter.nextLine().trim();
+                String[] parts = task.split("/by", 2);
+                String description = parts[0].trim();
+                String by = parts.length > 1 ? parts[1].trim() : null;
+                if (by == null) {
+                    System.out.println("Hey you don't have a valid deadline for the Deadline task! Use (name)/by(time)!");
+                } else {
+                    Task newTask = new Deadline(description, by);
+                    append(newTask);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println("    " + newTask);
+                    System.out.println("Now you have " + list.size() + " tasks in the list");
+
+                }
+                System.out.println(LINE);
+            } else if (action.equals("event")) {
+                System.out.println(LINE);
+                String task = splitter.nextLine().trim();
+                String[] parts = task.split("/from", 2);
+                String description = parts[0].trim();
+                String by = parts.length > 1 ? parts[1].trim() : null;
+                if (by == null) {
+                    System.out.println("Hey you don't have a valid date for the Event task! Use (name)/from(date)!");
+                } else {
+                    Task newTask = new Event(description, by);
+                    append(newTask);
+                    System.out.println("Got it. I've added this task:");
+                    System.out.println("    " + newTask);
+                    System.out.println("Now you have " + list.size() + " tasks in the list");
+                }
+                System.out.println(LINE);
+            } else {
+                System.out.println(LINE);
+                System.out.println("Hey, you did not enter a valid command/action. Please try again :)");
                 System.out.println(LINE);
             }
         }
