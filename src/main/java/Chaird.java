@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Chaird {
-    private final static String LINE = "------------------------------------------------";
+    private final static String LINE = "---------------------------------------------------------------------------------------------";
     private static ArrayList<Task> list = new ArrayList<>();
 
     private static void greet() {
@@ -35,6 +35,17 @@ public class Chaird {
         Task currTask = list.get(ind-1);
         currTask.unmark();
         System.out.println(currTask);
+        System.out.println(LINE);
+    }
+
+    private static void delete(int ind) {
+        System.out.println(LINE);
+        System.out.println("Noted. I've removed this task:");
+        Task currTask = list.get(ind-1);
+        System.out.println("    " + currTask);
+        list.remove(ind-1);
+        System.out.println("Now you have " + list.size() + " tasks in the list");
+        System.out.println("Please type \"list\" if unsure to check new order of tasks before performing more actions");
         System.out.println(LINE);
     }
 
@@ -130,6 +141,13 @@ public class Chaird {
                     System.out.println("    " + newTask);
                     System.out.println("Now you have " + list.size() + " tasks in the list");
                     System.out.println(LINE);
+                } else if (action.equals("delete")) {
+                    if (!splitter.hasNextInt()) {
+                        throw new ChairdException("Please provide a valid task number (int) to delete");
+                    }
+                    int ind = splitter.nextInt();
+                    checkValidIndex(ind);
+                    delete(ind);
                 } else {
                     throw new ChairdException("Hey, you did not enter a valid command/action. Please try again :)");
                 }
