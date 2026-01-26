@@ -1,16 +1,17 @@
 public class Task {
     protected String description;
     protected boolean isDone;
-    protected boolean toDo= false;
-    protected boolean deadline = false;
-    protected boolean event = false;
+
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
-
+    public Task(String description, boolean completed) {
+        this.description = description;
+        this.isDone = completed;
+    }
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (this.isDone ? "X" : " "); // mark done task with X
     }
 
     public void mark() {
@@ -21,9 +22,13 @@ public class Task {
         this.isDone = false;
     }
 
+    public String storageLine() {
+        return this.description;
+    }
+
     @Override
     public String toString() {
         String box = "[" + getStatusIcon() + "]";
-        return box + " " + description;
+        return box + " " + this.description;
     }
 }
