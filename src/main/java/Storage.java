@@ -15,7 +15,7 @@ public class Storage {
     public ArrayList<Task> load () {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
-        
+
         Path path = Paths.get("/src/main/data");
         try {
             Files.createDirectories(path);
