@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Chaird {
     private final static String LINE = "---------------------------------------------------------------------------------------------";
-    private static ArrayList<Task> list = new ArrayList<>();
+    private static Storage storage = new Storage("src/main/data/chaird.txt");
+    private static ArrayList<Task> list = storage.load();
 
     private static void greet() {
         System.out.println(LINE);
@@ -86,6 +87,7 @@ public class Chaird {
                     int ind = splitter.nextInt();
                     checkValidIndex(ind);
                     mark(ind);
+                    storage.save(list);
                 } else if (action.equals("unmark")) {
                     if (!splitter.hasNextInt()) {
                         throw new ChairdException("Please provide a valid task number (int) to unmark");
@@ -93,6 +95,7 @@ public class Chaird {
                     int ind = splitter.nextInt();
                     checkValidIndex(ind);
                     unmark(ind);
+                    storage.save(list);
                 } else if (action.equals("todo")) {
                     if (!splitter.hasNextLine()) {
                         throw new ChairdException("Please include a task description");
@@ -100,6 +103,7 @@ public class Chaird {
                     String task = splitter.nextLine().trim();
                     Task newTask = new Todo(task);
                     append(newTask);
+                    storage.save(list);
                     System.out.println(LINE);
                     System.out.println("Got it. I've added this task:");
                     System.out.println("    " + newTask);
@@ -118,6 +122,7 @@ public class Chaird {
                     }
                     Task newTask = new Deadline(description, by);
                     append(newTask);
+                    storage.save(list);
                     System.out.println(LINE);
                     System.out.println("Got it. I've added this task:");
                     System.out.println("    " + newTask);
@@ -136,6 +141,7 @@ public class Chaird {
                     }
                     Task newTask = new Event(description, by);
                     append(newTask);
+                    storage.save(list);
                     System.out.println(LINE);
                     System.out.println("Got it. I've added this task:");
                     System.out.println("    " + newTask);
@@ -148,6 +154,7 @@ public class Chaird {
                     int ind = splitter.nextInt();
                     checkValidIndex(ind);
                     delete(ind);
+                    storage.save(list);
                 } else {
                     throw new ChairdException("Hey, you did not enter a valid command/action. Please try again :)");
                 }

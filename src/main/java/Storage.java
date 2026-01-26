@@ -1,5 +1,4 @@
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,8 +15,8 @@ public class Storage {
     public ArrayList<Task> load () {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
-
-        Path path = Paths.get("../data");
+        
+        Path path = Paths.get("/src/main/data");
         try {
             Files.createDirectories(path);
         } catch (IOException e) {
@@ -28,9 +27,7 @@ public class Storage {
             return tasks;
         }
 
-        FileReader fileReader = new FileReader(file);
-
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Task taskToAdd = readLineIntoTask(line);
