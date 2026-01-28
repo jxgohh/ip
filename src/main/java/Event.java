@@ -8,7 +8,7 @@ public class Event extends Task{
 
     public Event(String description, boolean completed, String from) throws ChairdException{
         super(description, completed);
-        this.from = new Date(from)
+        this.from = new Date(from);
     }
 
     public Date getFrom() {
