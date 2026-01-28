@@ -1,22 +1,23 @@
 public class Event extends Task{
-    protected String from;
+    protected Date from;
 
-    public Event(String description, String from) {
+    public Event(String description, String from) throws ChairdException{
         super(description);
-        this.from = from;
+        this.from = new Date(from);
     }
 
-    public Event(String description, boolean completed, String from) {
+    public Event(String description, boolean completed, String from) throws ChairdException{
         super(description, completed);
-        this.from = from;
+        this.from = new Date(from)
     }
 
-    public String getFrom() {
+    public Date getFrom() {
         return this.from;
     }
+
     @Override
     public String storageLine() {
-        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from;
+        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from.storageLineStr();
     }
 
     @Override

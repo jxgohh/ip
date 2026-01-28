@@ -120,14 +120,20 @@ public class Chaird {
                     if (by == null) {
                         throw new ChairdException("Hey you don't have a valid deadline for the Deadline task! Use (name)/by(time)!");
                     }
-                    Task newTask = new Deadline(description, by);
-                    append(newTask);
-                    storage.save(list);
-                    System.out.println(LINE);
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("    " + newTask);
-                    System.out.println("Now you have " + list.size() + " tasks in the list");
-                    System.out.println(LINE);
+                    try {
+                        Deadline newTask = new Deadline(description, by);  // ← Date exception thrown here if invalid
+                        append(newTask);
+                        storage.save(list);
+                        System.out.println(LINE);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println("  " + newTask);
+                        System.out.println("Now you have " + list.size() + " tasks in the list.");
+                        System.out.println(LINE);
+                    } catch (ChairdException e) {
+                        System.out.println(LINE);
+                        System.out.println("Error adding deadline: " + e.getMessage());
+                        System.out.println(LINE);
+                    }
                 } else if (action.equals("event")) {
                     if (!splitter.hasNextLine()) {
                         throw new ChairdException("Please include a task description");

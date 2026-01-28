@@ -1,4 +1,9 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +21,7 @@ public class Storage {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 
-        Path path = Paths.get("/src/main/data");
+        Path path = Paths.get("./src/main/data");
         try {
             Files.createDirectories(path);
         } catch (IOException e) {
@@ -52,7 +57,7 @@ public class Storage {
             System.out.println("Error saving: " + e.getMessage());
         }
     }
-    public Task readLineIntoTask(String line) {
+    public Task readLineIntoTask(String line) throws ChairdException {
         String[] parts = line.split("\\|", 3);
 
         String eventType = parts[0].trim();
