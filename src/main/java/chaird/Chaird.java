@@ -3,7 +3,7 @@ package chaird;
 import java.util.Scanner;
 /**
  * Chaird is the main driver of the application. Handles user interaction,
- * task storage, and command execution
+ * task storage, and command execution.
  *
  * @author jxgohh
  */
@@ -30,7 +30,7 @@ public class Chaird {
      * displays a greeting message via the UI,
      * continuously reads user commands,
      * parses and executes user commands,
-     * terminates when "bye" command is enetered
+     * terminates when "bye" command is entered.
      */
     public void run() {
         ui.greet();

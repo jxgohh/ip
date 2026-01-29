@@ -7,8 +7,8 @@ package chaird;
 public class Deadline extends Task{
     protected Date by;
     /**
-     * Constructs a new Dateline class with the description and due date
-     * Deadline is incomplete by default
+     * Constructs a new Dateline class with the description and due date.
+     * Deadline is incomplete by default.
      *
      * @param description the task description
      * @param by the due date string in appropriate format
@@ -20,8 +20,8 @@ public class Deadline extends Task{
     }
 
     /**
-     * Constructs a new Dateline class with the description and due date
-     * Allows the specification of completeness of the task
+     * Constructs a new Dateline class with the description and due date.
+     * Allows the specification of completeness of the task.
      *
      * @param description the task description
      * @param completed whether the task is marked as complete or not

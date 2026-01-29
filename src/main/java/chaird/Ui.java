@@ -25,7 +25,7 @@ public class Ui {
     }
 
     /**
-     * Prints confirmation messages when a task is marked as completed
+     * Prints confirmation messages when a task is marked as completed.
      *
      * @param task the task that was marked done
      */
@@ -37,7 +37,7 @@ public class Ui {
     }
 
     /**
-     * Prints confirmation messages when a task is unmarked as completed
+     * Prints confirmation messages when a task is unmarked as completed.
      *
      * @param task the task that was marked undone
      */
@@ -49,7 +49,7 @@ public class Ui {
     }
 
     /**
-     * Prints confirmation messages when a task is deleted
+     * Prints confirmation messages when a task is deleted.
      *
      * @param task the task that was deleted
      * @param size the size of the list of tasks after deletion
@@ -63,7 +63,7 @@ public class Ui {
         System.out.println(LINE);
     }
     /**
-     * Prints all tasks in the tasklist
+     * Prints all tasks in the tasklist.
      *
      * @param list the ArrayList of all tasks in the application
      */
@@ -78,7 +78,7 @@ public class Ui {
     }
 
     /**
-     * Prints confirmation messages when a new task is added
+     * Prints confirmation messages when a new task is added.
      *
      * @param task the task that was added
      * @param size the size of the list after the task is added
@@ -92,7 +92,7 @@ public class Ui {
     }
 
     /**
-     * Reads the next line of input that the user puts into the scanner
+     * Reads the next line of input that the user puts into the scanner.
      *
      * @param sc the scanner to read from
      * @return the trimmed command string entered by the user

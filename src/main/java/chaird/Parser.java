@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Parser {
     /**
      * Parses a raw user input line into a Command object.
-     * Validates syntax and extracts command type, index, task description and time
+     * Validates syntax and extracts command type, index, task description and time.
      *
      * @param line the raw input string to parse
      * @return a parsed Command object

@@ -26,7 +26,7 @@ public class TaskList {
         list.add(t);
     }
     /**
-     * Marks a task as complete using its index
+     * Marks a task as complete using its index.
      *
      * @param ind the index of the task in the list
      * @throws ChairdException if the index is invalid (≤0 or > list size)
@@ -37,7 +37,7 @@ public class TaskList {
     }
 
     /**
-     * Marks a task as incomplete using its index
+     * Marks a task as incomplete using its index.
      *
      * @param ind the index of the task in the list
      * @throws ChairdException if the index is invalid (≤0 or > list size)
@@ -48,7 +48,7 @@ public class TaskList {
     }
 
     /**
-     * Deletes a task from the list using its index
+     * Deletes a task from the list using its index.
      *
      * @param ind the index of the task in the list
      * @throws ChairdException if the index is invalid (≤0 or > list size)
@@ -70,7 +70,7 @@ public class TaskList {
     public ArrayList<Task> getList() {
         return list;
     }
-    
+
     private void checkValidIndex(int ind) throws ChairdException {
         if (ind <= 0 || ind > list.size()) {
             throw new ChairdException("Task index " + ind + " is invalid!");

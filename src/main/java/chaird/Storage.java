@@ -22,8 +22,8 @@ public class Storage {
     }
 
     /**
-     * Loads all tasks from the storage file into an ArrayList
-     * Creates the directory if it doesn't exist. Returns empty list for new or corrupted files..
+     * Loads all tasks from the storage file into an ArrayList.
+     * Creates the directory if it doesn't exist. Returns empty list for new or corrupted files.
      *
      * @return ArrayList of Task objects
      */

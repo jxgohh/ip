@@ -1,7 +1,7 @@
 package chaird;
 /**
  * Command class encapsulates commands that are broken down by
- * the Parser class to be accessed by other classes
+ * the Parser class to be accessed by other classes.
  */
 public class Command {
     private final String action, desc;
