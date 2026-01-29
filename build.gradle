@@ -28,7 +28,7 @@ test {
 }
 
 application {
-    mainClass.set("src/main/java/Chaird")
+    mainClass.set("chaird.Chaird")
 }
 
 shadowJar {

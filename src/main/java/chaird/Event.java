@@ -1,13 +1,33 @@
 package chaird;
 
+/**
+ * Represents an Event task with a specific date.
+ * Extends the Task class and adds date functionalities.
+ */
 public class Event extends Task{
     protected Date from;
 
+    /**
+     * Constructs a new Task class with the description and date
+     * Event is incomplete by default
+     *
+     * @param description the task description
+     * @param from the date string in appropriate format
+     * @throws ChairdException if the due date string is invalid
+     */
     public Event(String description, String from) throws ChairdException{
         super(description);
         this.from = new Date(from);
     }
-
+    /**
+     * Constructs a new Task class with the description and date
+     * Allows the specification of completeness of the task
+     *
+     * @param description the task description
+     * @param completed whether the task is marked as complete or not
+     * @param from the date string in appropriate format
+     * @throws ChairdException if the due date string is invalid
+     */
     public Event(String description, boolean completed, String from) throws ChairdException{
         super(description, completed);
         this.from = new Date(from);

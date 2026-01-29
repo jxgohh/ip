@@ -10,7 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
+/**
+ * Manages storage of tasks to/from a text file.
+ * Handles reading task data on startup and saving task during run.
+ */
 public class Storage {
     private final String filePath;
 
@@ -18,6 +21,12 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads all tasks from the storage file into an ArrayList
+     * Creates the directory if it doesn't exist. Returns empty list for new or corrupted files..
+     *
+     * @return ArrayList of Task objects
+     */
     public ArrayList<Task> load () {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -49,6 +58,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves the current task list to the storage file.
+     * Overwrites existing file content with current tasks.
+     *
+     * @param tasks the ArrayList of tasks to save
+     */
     public void save(ArrayList<Task> tasks) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filePath))) {
             for (Task t: tasks) {
@@ -58,6 +73,15 @@ public class Storage {
             System.out.println("Error saving: " + e.getMessage());
         }
     }
+
+    /**
+     * Parses a single storage line into a Task object.
+     * Supports Todo (T), Deadline (D), and Event (E) formats.
+     *
+     * @param line the line from the storage file
+     * @return the reconstructed Task object
+     * @throws ChairdException if the line format is corrupted
+     */
     public Task readLineIntoTask(String line) throws ChairdException {
         String[] parts = line.split("\\|", 3);
 

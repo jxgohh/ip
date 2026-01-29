@@ -1,7 +1,19 @@
 package chaird;
 
 import java.util.Scanner;
+/**
+ * Parses user input strings into structured Command objects.
+ * Handles validation of command syntax and extracts parameters for all supported actions.
+ */
 public class Parser {
+    /**
+     * Parses a raw user input line into a Command object.
+     * Validates syntax and extracts command type, index, task description and time
+     *
+     * @param line the raw input string to parse
+     * @return a parsed Command object
+     * @throws ChairdException if the input is incorrect or contains invalid syntax
+     */
     public static Command parseLine(String line) throws ChairdException {
         Scanner splitter = new Scanner(line);
         String action = splitter.next();

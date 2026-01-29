@@ -1,13 +1,33 @@
 package chaird;
 
+/**
+ * Represents a task with a specific deadline.
+ * Extends the Task class and adds deadline functionalities.
+ */
 public class Deadline extends Task{
     protected Date by;
-
+    /**
+     * Constructs a new Dateline class with the description and due date
+     * Deadline is incomplete by default
+     *
+     * @param description the task description
+     * @param by the due date string in appropriate format
+     * @throws ChairdException if the due date string is invalid
+     */
     public Deadline(String description, String by) throws ChairdException {
         super(description);
         this.by = new Date(by);
     }
 
+    /**
+     * Constructs a new Dateline class with the description and due date
+     * Allows the specification of completeness of the task
+     *
+     * @param description the task description
+     * @param completed whether the task is marked as complete or not
+     * @param by the due date string in appropriate format
+     * @throws ChairdException if the due date string is invalid
+     */
     public Deadline(String description, boolean completed, String by) throws ChairdException {
         super(description, completed);
         this.by = new Date(by);
