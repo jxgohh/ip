@@ -1,3 +1,5 @@
+package chaird;
+
 public class Command {
     private final String action, desc;
     private String date = null;

@@ -1,3 +1,5 @@
+package chaird;
+
 import java.util.Scanner;
 public class Parser {
     public static Command parseLine(String line) throws ChairdException {
@@ -19,16 +21,29 @@ public class Parser {
             }
             return new Command(action, -1, splitter.nextLine().trim());
         }
-        if (action.equals("deadline") || action.equals("event")) {
+        if (action.equals("deadline")) {
             if (!splitter.hasNextLine()) {
                 throw new ChairdException("Please include a task description");
             }
             String task = splitter.nextLine().trim();
             String[] parts = task.split("/by", 2);
             String description = parts[0].trim();
-            String time = parts.length > 1 ? parts[1].trim() : null;
-            if (time == null) {
-                throw new ChairdException("Hey you don't have a valid deadline for the Deadline task! Use (name)/by(time)!");
+            String time = parts.length > 1 ? parts[1].trim() : "";
+            if (time.isEmpty()) {
+                throw new ChairdException("Hey you don't have a valid deadline for the task! Use (name)/by(time)!");
+            }
+            return new Command(action, -1, description, time);
+        }
+        if (action.equals("event")) {
+            if (!splitter.hasNextLine()) {
+                throw new ChairdException("Please include a task description");
+            }
+            String task = splitter.nextLine().trim();
+            String[] parts = task.split("/from", 2);
+            String description = parts[0].trim();
+            String time = parts.length > 1 ? parts[1].trim() : "";
+            if (time.isEmpty()) {
+                throw new ChairdException("Hey you don't have a valid time for the event! Use (name)/from(time)!");
             }
             return new Command(action, -1, description, time);
         }

@@ -1,8 +1,10 @@
+package chaird;
+
 import java.util.Scanner;
 
 public class Chaird {
     private Storage storage;
-    private Tasklist tasks;
+    private TaskList tasks;
     private Ui ui;
     private Scanner sc;
 
@@ -10,7 +12,7 @@ public class Chaird {
         ui = new Ui();
         storage = new Storage(filePath);
         sc = new Scanner(System.in);
-        tasks = new Tasklist(storage.load());
+        tasks = new TaskList(storage.load());
     }
 
     public void run() {

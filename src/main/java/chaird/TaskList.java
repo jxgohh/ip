@@ -1,9 +1,11 @@
+package chaird;
+
 import java.util.ArrayList;
 
-public class Tasklist {
+public class TaskList {
     private ArrayList<Task> list;
 
-    public Tasklist(ArrayList<Task> tasks) {
+    public TaskList(ArrayList<Task> tasks) {
         this.list = tasks;
     }
 

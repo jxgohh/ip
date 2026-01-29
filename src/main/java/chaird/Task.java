@@ -1,3 +1,5 @@
+package chaird;
+
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -26,6 +28,9 @@ public class Task {
         return this.description;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
     @Override
     public String toString() {
         String box = "[" + getStatusIcon() + "]";

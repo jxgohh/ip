@@ -1,3 +1,5 @@
+package chaird;
+
 public class Event extends Task{
     protected Date from;
 

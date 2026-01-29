@@ -28,11 +28,11 @@ test {
 }
 
 application {
-    mainClass.set("Chaird")
+    mainClass.set("src/main/java/Chaird")
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "Chaird"
     archiveClassifier = null
 }
 

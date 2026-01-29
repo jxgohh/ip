@@ -1,3 +1,5 @@
+package chaird;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 
 public class Storage {
     private final String filePath;
@@ -42,7 +43,7 @@ public class Storage {
                 tasks.add(taskToAdd);
             }
         } catch (IOException | ChairdException e) {
-            System.out.println("Error! File is corrupted, please delete it under ./data/chaird.txt.");
+            System.out.println("File is corrupted, please delete it under ./data/chaird.txt. Your list will be empty.");
             return new ArrayList<>();
         }
         return tasks;
