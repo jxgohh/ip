@@ -1,5 +1,6 @@
 package chaird;
 
+import java.awt.*;
 import java.util.Scanner;
 /**
  * Parses user input strings into structured Command objects.
@@ -33,6 +34,13 @@ public class Parser {
             }
             return new Command(action, -1, splitter.nextLine().trim());
         }
+        if (action.equals("find")) {
+            if (!splitter.hasNextLine()) {
+                throw new ChairdException("Please include a keyword");
+            }
+            String keyword = splitter.nextLine().trim();
+            return new Command(action, -1, keyword);
+        }
         if (action.equals("deadline")) {
             if (!splitter.hasNextLine()) {
                 throw new ChairdException("Please include a task description");
@@ -59,6 +67,7 @@ public class Parser {
             }
             return new Command(action, -1, description, time);
         }
+
         throw new ChairdException("Hey, you did not enter a valid command/action. Please try again :)");
     }
 }

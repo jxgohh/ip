@@ -92,6 +92,20 @@ public class Ui {
     }
 
     /**
+     * Prints all tasks in the search tasklist.
+     *
+     * @param tasks the ArrayList of all matching tasks
+     */
+    public void find(ArrayList<Task> tasks) {
+        System.out.println(LINE);
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            String str = Integer.toString(i + 1);
+            System.out.println(str + ". " + tasks.get(i));
+        }
+        System.out.println(LINE);
+    }
+    /**
      * Reads the next line of input that the user puts into the scanner.
      *
      * @param sc the scanner to read from

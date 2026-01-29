@@ -1,5 +1,6 @@
 package chaird;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * Chaird is the main driver of the application. Handles user interaction,
@@ -70,6 +71,9 @@ public class Chaird {
                     tasks.add(newTask);
                     storage.save(tasks.getList());
                     ui.add(newTask, tasks.size());
+                } else if (cmd.getAction().equals("find")) {
+                    ArrayList<Task> matchingTasks = tasks.findTasks(cmd.getDesc());
+                    ui.find(matchingTasks);
                 }
 
             } catch (ChairdException e) {

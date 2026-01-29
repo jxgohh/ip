@@ -1,5 +1,6 @@
 package chaird;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 /**
  * Manages a collection of Task objects.
@@ -15,6 +16,21 @@ public class TaskList {
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    /**
+     * Finds all tasks in the tasklist that contains the keyword
+     *
+     * @param keyword the keyword to search the list for matching tasks
+     */
+    public ArrayList<Task> findTasks(String keyword) {
+        ArrayList<Task> foundTasks = new ArrayList<>();
+        for (Task t: this.tasks) {
+            if (t.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+                foundTasks.add(t);
+            }
+        }
+        return foundTasks;
     }
 
     /**

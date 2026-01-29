@@ -1,1 +1,5 @@
 D | 0 | tmr | 2020-03-11 1800
+T | 0 | read book
+D | 0 | return book | 2020-11-12 1700
+T | 0 | fight
+E | 0 | boo | 2025-01-01 2359
