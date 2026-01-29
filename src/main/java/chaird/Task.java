@@ -23,11 +23,11 @@ public class Task {
      * Allows the specification of completeness of the task.
      *
      * @param description the task description
-     * @param completed whether the task is marked as complete or not
+     * @param isDone whether the task is marked as complete or not
      */
-    public Task(String description, boolean completed) {
+    public Task(String description, boolean isDone) {
         this.description = description;
-        this.isDone = completed;
+        this.isDone = isDone;
     }
     /**
      * Returns an X if the task is considered as completed.
@@ -37,12 +37,14 @@ public class Task {
     public String getStatusIcon() {
         return (this.isDone ? "X" : " ");
     }
+
     /**
      * Marks this task as completed.
      */
     public void mark() {
         this.isDone = true;
     }
+
     /**
      * Marks this task as uncompleted.
      */

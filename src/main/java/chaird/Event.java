@@ -24,12 +24,12 @@ public class Event extends Task{
      * Allows the specification of completeness of the task.
      *
      * @param description the task description
-     * @param completed whether the task is marked as complete or not
+     * @param isDone whether the task is marked as complete or not
      * @param from the date string in appropriate format
      * @throws ChairdException if the due date string is invalid
      */
-    public Event(String description, boolean completed, String from) throws ChairdException{
-        super(description, completed);
+    public Event(String description, boolean isDone, String from) throws ChairdException{
+        super(description, isDone);
         this.from = new Date(from);
     }
 

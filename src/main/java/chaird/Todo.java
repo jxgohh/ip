@@ -20,10 +20,10 @@ public class Todo extends Task {
      * Allows the specification of completeness of the task.
      *
      * @param description the task description
-     * @param completed whether the task is marked as complete or not
+     * @param isDone whether the task is marked as complete or not
      */
-    public Todo(String description, boolean completed) {
-        super(description, completed);
+    public Todo(String description, boolean isDone) {
+        super(description, isDone);
     }
 
     @Override

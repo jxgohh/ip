@@ -65,14 +65,14 @@ public class Ui {
     /**
      * Prints all tasks in the tasklist.
      *
-     * @param list the ArrayList of all tasks in the application
+     * @param tasks the ArrayList of all tasks in the application
      */
-    public void printList(ArrayList<Task> list) {
+    public void printList(ArrayList<Task> tasks) {
         System.out.println(LINE);
         System.out.println("Here are the tasks in your list:");
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < tasks.size(); i++) {
             String str = Integer.toString(i + 1);
-            System.out.println(str + ". " + list.get(i));
+            System.out.println(str + ". " + tasks.get(i));
         }
         System.out.println(LINE);
     }

@@ -24,12 +24,12 @@ public class Deadline extends Task{
      * Allows the specification of completeness of the task.
      *
      * @param description the task description
-     * @param completed whether the task is marked as complete or not
+     * @param isDone whether the task is marked as complete or not
      * @param by the due date string in appropriate format
      * @throws ChairdException if the due date string is invalid
      */
-    public Deadline(String description, boolean completed, String by) throws ChairdException {
-        super(description, completed);
+    public Deadline(String description, boolean isDone, String by) throws ChairdException {
+        super(description, isDone);
         this.by = new Date(by);
     }
 

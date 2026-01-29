@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Allows for adding, deleting, marking, unmarking and size queries.
  */
 public class TaskList {
-    private ArrayList<Task> list;
+    private ArrayList<Task> tasks;
 
     /**
      * Constructs a new TaskList with the provided tasks.
@@ -14,7 +14,7 @@ public class TaskList {
      * @param tasks the initial list of tasks (may be empty)
      */
     public TaskList(ArrayList<Task> tasks) {
-        this.list = tasks;
+        this.tasks = tasks;
     }
 
     /**
@@ -23,7 +23,7 @@ public class TaskList {
      * @param t the Task to add
      */
     public void add(Task t) {
-        list.add(t);
+        tasks.add(t);
     }
     /**
      * Marks a task as complete using its index.
@@ -33,7 +33,7 @@ public class TaskList {
      */
     public void mark(int ind) throws ChairdException {
         checkValidIndex(ind);
-        list.get(ind - 1).mark();
+        tasks.get(ind - 1).mark();
     }
 
     /**
@@ -44,7 +44,7 @@ public class TaskList {
      */
     public void unmark(int ind) throws ChairdException {
         checkValidIndex(ind);
-        list.get(ind - 1).unmark();
+        tasks.get(ind - 1).unmark();
     }
 
     /**
@@ -55,7 +55,7 @@ public class TaskList {
      */
     public void delete(int ind) throws ChairdException {
         checkValidIndex(ind);
-        list.remove(ind - 1);
+        tasks.remove(ind - 1);
     }
 
     /**
@@ -64,15 +64,15 @@ public class TaskList {
      * @return the size of the task list
      */
     public int size() {
-        return list.size();
+        return tasks.size();
     }
 
     public ArrayList<Task> getList() {
-        return list;
+        return tasks;
     }
 
     private void checkValidIndex(int ind) throws ChairdException {
-        if (ind <= 0 || ind > list.size()) {
+        if (ind <= 0 || ind > tasks.size()) {
             throw new ChairdException("Task index " + ind + " is invalid!");
         }
     }
