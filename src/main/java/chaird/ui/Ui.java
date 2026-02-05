@@ -12,42 +12,39 @@ public class Ui {
     private final static String LINE = "---------------------------------------------------------------------------------------------";
     /**
      * Prints the welcome greeting message when the application starts.
+     *
+     * @return greeting message
      */
-    public void greet() {
-        System.out.println(LINE);
-        System.out.println("Hello! I'm Chaird (chat)\nWhat can I do for you?");
-        System.out.println(LINE);
+    public String greet() {
+        return "Hello! I'm Chaird (chat)\nWhat can I do for you?";
     }
     /**
      * Prints the goodbye message when user exits the application.
+     *
+     * @return goodbye message
      */
-    public void goodbye() {
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println(LINE);
+    public String goodbye() {
+        return "Bye. Hope to see you again soon!";
     }
 
     /**
      * Prints confirmation messages when a task is marked as completed.
      *
      * @param task the task that was marked done
+     * @return confirmation message
      */
-    public void mark(Task task) {
-        System.out.println(LINE);
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(task);
-        System.out.println(LINE);
+    public String mark(Task task) {
+        return "Nice! I've marked this task as done:" + "\n" + task;
     }
 
     /**
      * Prints confirmation messages when a task is unmarked as completed.
      *
      * @param task the task that was marked undone
+     * @return confirmation message
      */
-    public void unmark(Task task) {
-        System.out.println(LINE);
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(task);
-        System.out.println(LINE);
+    public String unmark(Task task) {
+        return "OK, I've marked this task as not done yet:" + "\n" + task;
     }
 
     /**
@@ -55,28 +52,32 @@ public class Ui {
      *
      * @param task the task that was deleted
      * @param size the size of the list of tasks after deletion
+     * @return confirmation message for deleting task
      */
-    public void delete(Task task, int size) {
-        System.out.println(LINE);
-        System.out.println("Noted. I've removed this task:");
-        System.out.println("    " + task);
-        System.out.println("Now you have " + size + " tasks in the list");
-        System.out.println("Please type \"list\" if unsure to check new order of tasks before performing more actions");
-        System.out.println(LINE);
+    public String delete(Task task, int size) {
+        return "Noted. I've removed this task:" + "\n   " + task + "\n"
+                + "Now you have " + size + " tasks in the list \n"
+                + "Please type \"list\" if unsure to check new "
+                + "order of tasks before performing more actions";
     }
     /**
      * Prints all tasks in the tasklist.
      *
      * @param tasks the ArrayList of all tasks in the application
+     * @return all list contents
      */
-    public void printList(ArrayList<Task> tasks) {
-        System.out.println(LINE);
-        System.out.println("Here are the tasks in your list:");
+    public String printList(ArrayList<Task> tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Here are the tasks in your list:\n");
+
         for (int i = 0; i < tasks.size(); i++) {
-            String str = Integer.toString(i + 1);
-            System.out.println(str + ". " + tasks.get(i));
+            sb.append(i+1);
+            sb.append(". ");
+            sb.append(tasks.get(i));
+            sb.append("\n");
         }
-        System.out.println(LINE);
+
+        return sb.toString();
     }
 
     /**
@@ -84,47 +85,41 @@ public class Ui {
      *
      * @param task the task that was added
      * @param size the size of the list after the task is added
+     * @return confirmation message of adding task
      */
-    public void add(Task task, int size) {
-        System.out.println(LINE);
-        System.out.println("Got it. I've added this task:");
-        System.out.println("    " + task);
-        System.out.println("Now you have " + size + " tasks in the list");
-        System.out.println(LINE);
+    public String add(Task task, int size) {
+        return "Got it. I've added this task: \n"
+                + "    " + task + "\n"
+                + "Now you have " + size + " tasks in the list";
     }
 
     /**
      * Prints all tasks in the search tasklist.
      *
      * @param tasks the ArrayList of all matching tasks
+     * @return string of all matching tasks in list
      */
-    public void find(ArrayList<Task> tasks) {
-        System.out.println(LINE);
-        System.out.println("Here are the matching tasks in your list:");
+    public String find(ArrayList<Task> tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Here are the matching tasks in your list:\n");
+
         for (int i = 0; i < tasks.size(); i++) {
-            String str = Integer.toString(i + 1);
-            System.out.println(str + ". " + tasks.get(i));
+            sb.append(i+1);
+            sb.append(". ");
+            sb.append(tasks.get(i));
+            sb.append("\n");
         }
-        System.out.println(LINE);
-    }
-    /**
-     * Reads the next line of input that the user puts into the scanner.
-     *
-     * @param sc the scanner to read from
-     * @return the trimmed command string entered by the user
-     */
-    public String readCommand(Scanner sc) {
-        return sc.nextLine().trim();
+
+        return sb.toString();
     }
 
     /**
      * Prints an error message to inform the user of an invalid operation or input.
      *
      * @param message the error message to display
+     * @return error message
      */
-    public void printError(String message) {
-        System.out.println(LINE);
-        System.out.println(message);
-        System.out.println(LINE);
+    public String printError(String message) {
+        return message;
     }
 }

@@ -39,60 +39,52 @@ public class Chaird {
         sc = new Scanner(System.in);
         tasks = new TaskList(storage.load());
     }
-    /**
-     * Starts the Chaird application. This method:
-     * displays a greeting message via the UI,
-     * continuously reads user commands,
-     * parses and executes user commands,
-     * terminates when "bye" command is entered.
-     */
-    public void run() {
-        ui.greet();
-        while (true) {
-            try {
-                String line = ui.readCommand(sc);
-                Command cmd = Parser.parseLine(line);
-                if (cmd.getAction().equals("bye")) {
-                    ui.goodbye();
-                    break;
-                } else if (cmd.getAction().equals("list")) {
-                    ui.printList(tasks.getList());
-                } else if (cmd.getAction().equals("mark")) {
-                    tasks.mark(cmd.getInd());
-                    ui.mark(tasks.getList().get(cmd.getInd()-1));
-                    storage.save(tasks.getList());
-                } else if (cmd.getAction().equals("unmark")) {
-                    tasks.unmark(cmd.getInd());
-                    ui.unmark(tasks.getList().get(cmd.getInd()-1));
-                    storage.save(tasks.getList());
-                } else if (cmd.getAction().equals("delete")) {
-                    Task toDelete = tasks.getList().get(cmd.getInd()-1);
-                    tasks.delete(cmd.getInd());
-                    ui.delete(toDelete, tasks.size());
-                } else if (cmd.getAction().equals("todo")) {
-                    Task newTask = new Todo(cmd.getDesc());
-                    tasks.add(newTask);
-                    storage.save(tasks.getList());
-                    ui.add(newTask, tasks.size());
-                } else if (cmd.getAction().equals("deadline")) {
-                    Task newTask = new Deadline(cmd.getDesc(), cmd.getDate());
-                    tasks.add(newTask);
-                    storage.save(tasks.getList());
-                    ui.add(newTask, tasks.size());
-                } else if (cmd.getAction().equals("event")) {
-                    Task newTask = new Event(cmd.getDesc(), cmd.getDate());
-                    tasks.add(newTask);
-                    storage.save(tasks.getList());
-                    ui.add(newTask, tasks.size());
-                } else if (cmd.getAction().equals("find")) {
-                    ArrayList<Task> matchingTasks = tasks.findTasks(cmd.getDesc());
-                    ui.find(matchingTasks);
-                }
 
-            } catch (ChairdException e) {
-                ui.printError(e.getMessage());
+    public String getResponse(String input) {
+        ChairdException errorToPrint = null;
+        try {
+            Command cmd = Parser.parseLine(input);
+            switch (cmd.getAction()) {
+                case "bye":
+                    return ui.goodbye();
+                case "list":
+                    return ui.printList(tasks.getList());
+                case "mark":
+                    tasks.mark(cmd.getInd());
+                    storage.save(tasks.getList());
+                    return ui.mark(tasks.getList().get(cmd.getInd() - 1));
+                case "unmark":
+                    tasks.unmark(cmd.getInd());
+                    storage.save(tasks.getList());
+                    return ui.unmark(tasks.getList().get(cmd.getInd() - 1));
+                case "delete":
+                    Task taskToDelete = tasks.getList().get(cmd.getInd() - 1);
+                    tasks.delete(cmd.getInd());
+                    return ui.delete(taskToDelete, tasks.size());
+                case "todo":
+                    Task newTodo = new Todo(cmd.getDesc());
+                    tasks.add(newTodo);
+                    storage.save(tasks.getList());
+                    return ui.add(newTodo, tasks.size());
+                case "deadline":
+                    Task newDeadline = new Deadline(cmd.getDesc(), cmd.getDate());
+                    tasks.add(newDeadline);
+                    storage.save(tasks.getList());
+                    return ui.add(newDeadline, tasks.size());
+                case "event":
+                    Task newEvent = new Event(cmd.getDesc(), cmd.getDate());
+                    tasks.add(newEvent);
+                    storage.save(tasks.getList());
+                    return ui.add(newEvent, tasks.size());
+                case "find":
+                    ArrayList<Task> matchingTasks = tasks.findTasks(cmd.getDesc());
+                    return ui.find(matchingTasks);
             }
+
+        } catch (ChairdException e) {
+            errorToPrint = e;
         }
-        sc.close();
+
+        return ui.printError(errorToPrint.getMessage());
     }
 }
