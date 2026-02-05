@@ -1,6 +1,7 @@
-package chaird;
+package chaird.parser;
 
-import java.awt.*;
+import chaird.exception.ChairdException;
+
 import java.util.Scanner;
 /**
  * Parses user input strings into structured Command objects.

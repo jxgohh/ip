@@ -1,4 +1,10 @@
-package chaird;
+package chaird.storage;
+
+import chaird.exception.ChairdException;
+import chaird.task.Deadline;
+import chaird.task.Event;
+import chaird.task.Task;
+import chaird.task.Todo;
 
 import java.io.BufferedReader;
 import java.io.File;

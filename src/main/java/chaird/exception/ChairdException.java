@@ -1,4 +1,4 @@
-package chaird;
+package chaird.exception;
 
 public class ChairdException extends Exception {
     public ChairdException(String message) {

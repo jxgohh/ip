@@ -1,4 +1,6 @@
-package chaird;
+package chaird.ui;
+
+import chaird.task.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;

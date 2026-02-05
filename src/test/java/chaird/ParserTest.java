@@ -1,5 +1,8 @@
 package chaird;
 
+import chaird.exception.ChairdException;
+import chaird.parser.Command;
+import chaird.parser.Parser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

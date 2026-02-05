@@ -1,11 +1,10 @@
-package chaird;
+package chaird.task;
 
 /**
  * Represents a basic to-do task without a specific date or time.
  * Extends the base Task class.
  */
 public class Todo extends Task {
-
     /**
      * Constructs a new Todo task with its description.
      * Todo is incomplete by default.

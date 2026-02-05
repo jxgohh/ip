@@ -1,4 +1,7 @@
-package chaird;
+package chaird.tasklist;
+
+import chaird.exception.ChairdException;
+import chaird.task.Task;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

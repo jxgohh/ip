@@ -1,4 +1,6 @@
-package chaird;
+package chaird.task;
+
+import chaird.exception.ChairdException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

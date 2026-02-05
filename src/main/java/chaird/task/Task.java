@@ -1,4 +1,4 @@
-package chaird;
+package chaird.task;
 /**
  * Represents a basic task without a specific date or time.
  * Abstract base class providing base functionalities for all it's children.
@@ -65,6 +65,11 @@ public class Task {
     public String getDescription() {
         return this.description;
     }
+
+    public boolean getIsDone() {
+        return this.isDone;
+    }
+
     @Override
     public String toString() {
         String box = "[" + getStatusIcon() + "]";

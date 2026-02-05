@@ -1,4 +1,6 @@
-package chaird;
+package chaird.task;
+
+import chaird.exception.ChairdException;
 
 /**
  * Represents a task with a specific deadline.

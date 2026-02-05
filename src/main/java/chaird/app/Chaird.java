@@ -1,7 +1,20 @@
-package chaird;
+package chaird.app;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import chaird.exception.ChairdException;
+import chaird.parser.Command;
+import chaird.parser.Parser;
+import chaird.storage.Storage;
+import chaird.task.Deadline;
+import chaird.task.Task;
+import chaird.task.Event;
+import chaird.task.Todo;
+import chaird.tasklist.TaskList;
+import chaird.ui.Ui;
+
+
 /**
  * Chaird is the main driver of the application. Handles user interaction,
  * task storage, and command execution.
@@ -81,14 +94,5 @@ public class Chaird {
             }
         }
         sc.close();
-    }
-    /**
-     * The main entry point for Chaird.
-     * Initializes and runs the program with a default data file path.
-     *
-     * @param args command-line arguments (not used)
-     */
-    public static void main(String[] args) {
-        new Chaird("./src/main/data/chaird.txt").run();
     }
 }

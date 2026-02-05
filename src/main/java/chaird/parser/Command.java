@@ -1,4 +1,4 @@
-package chaird;
+package chaird.parser;
 /**
  * Command class encapsulates commands that are broken down by
  * the Parser class to be accessed by other classes.

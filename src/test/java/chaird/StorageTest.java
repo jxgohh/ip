@@ -5,6 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import chaird.exception.ChairdException;
+import chaird.storage.Storage;
+import chaird.task.Deadline;
+import chaird.task.Task;
+import chaird.task.Todo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +22,8 @@ public class StorageTest {
     public void readLineIntoTask_correctLines_correctTaskDescription() throws ChairdException {
         Storage storage = new Storage("test.txt");
         Task todo = storage.readLineIntoTask("T | 1 | read book");
-        assertEquals("read book", todo.description);
-        assertTrue(todo.isDone);
+        assertEquals("read book", todo.getDescription());
+        assertTrue(todo.getIsDone());
 
     }
 
@@ -25,7 +31,7 @@ public class StorageTest {
     public void readLineIntoTask_correctLines_correctTaskDate() throws ChairdException {
         Storage storage = new Storage("test.txt");
         Deadline deadline = (Deadline) storage.readLineIntoTask("D | 0 | finish studying for test | 2025-02-25 1900");
-        assertEquals("Feb 25 2025 1900", deadline.by.toString());
+        assertEquals("Feb 25 2025 1900", deadline.getBy().toString());
     }
 
     @Test
@@ -43,9 +49,9 @@ public class StorageTest {
         boolean isDeleted = new File(tempFile).delete();
 
         assertEquals(2, loadedTasks.size());
-        assertEquals("read book", ((Todo) loadedTasks.get(0)).description);
-        assertEquals("study", ((Deadline) loadedTasks.get(1)).description);
-        assertTrue(((Deadline) loadedTasks.get(1)).isDone);
+        assertEquals("read book", ((Todo) loadedTasks.get(0)).getDescription());
+        assertEquals("study", ((Deadline) loadedTasks.get(1)).getDescription());
+        assertTrue(((Deadline) loadedTasks.get(1)).getIsDone());
     }
 
     @Test

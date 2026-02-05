@@ -1,4 +1,6 @@
-package chaird;
+package chaird.task;
+
+import chaird.exception.ChairdException;
 
 /**
  * Represents an Event task with a specific date.
@@ -15,7 +17,7 @@ public class Event extends Task{
      * @param from the date string in appropriate format
      * @throws ChairdException if the due date string is invalid
      */
-    public Event(String description, String from) throws ChairdException{
+    public Event(String description, String from) throws ChairdException {
         super(description);
         this.from = new Date(from);
     }
