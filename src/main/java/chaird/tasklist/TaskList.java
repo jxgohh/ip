@@ -50,7 +50,7 @@ public class TaskList {
      * @param ind the index of the task in the list
      * @throws ChairdException if the index is invalid (≤0 or > list size)
      */
-    public void mark(int ind) throws ChairdException {
+    public void mark(int ind) throws Chair  dException {
         checkValidIndex(ind);
         tasks.get(ind - 1).mark();
     }

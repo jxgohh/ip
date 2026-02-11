@@ -84,7 +84,7 @@ public class Chaird {
         } catch (ChairdException e) {
             errorToPrint = e;
         }
-
+        assert errorToPrint != null;
         return ui.printError(errorToPrint.getMessage());
     }
 }
