@@ -42,7 +42,9 @@ public class TaskList {
      * @param t the Task to add
      */
     public void add(Task t) {
+        int old_size = tasks.size();
         tasks.add(t);
+        assert tasks.size() == old_size + 1;
     }
     /**
      * Marks a task as complete using its index.
@@ -50,7 +52,7 @@ public class TaskList {
      * @param ind the index of the task in the list
      * @throws ChairdException if the index is invalid (≤0 or > list size)
      */
-    public void mark(int ind) throws Chair  dException {
+    public void mark(int ind) throws ChairdException {
         checkValidIndex(ind);
         tasks.get(ind - 1).mark();
     }
