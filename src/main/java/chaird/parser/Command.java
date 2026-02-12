@@ -6,22 +6,22 @@ package chaird.parser;
 public class Command {
     private final String action, desc;
     private String date = null;
-    private final int ind;
+    private final int index;
 
-    public Command(String action, int ind, String desc) {
-        this.ind = ind;
+    public Command(String action, int index, String desc) {
+        this.index = index;
         this.action = action;
         this.desc = desc;
     }
     public Command(String action, int ind, String desc, String date) {
-        this.ind = ind;
+        this.index = ind;
         this.action = action;
         this.desc = desc;
         this.date = date;
     }
 
-    public int getInd() {
-        return ind;
+    public int getIndex() {
+        return index;
     }
 
     public String getAction() {

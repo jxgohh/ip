@@ -34,7 +34,6 @@ public class Storage {
      * @return ArrayList of Task objects
      */
     public ArrayList<Task> load () {
-        assert this.filePath.equals("./src/main/data/chaird.txt");
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
 

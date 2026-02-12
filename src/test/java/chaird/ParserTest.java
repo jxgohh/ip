@@ -23,7 +23,7 @@ public class ParserTest {
 
         cmd = Parser.parseLine("mark 3");
         assertEquals("mark", cmd.getAction());
-        assertEquals(3, cmd.getInd());
+        assertEquals(3, cmd.getIndex());
     }
 
     @Test

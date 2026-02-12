@@ -50,16 +50,16 @@ public class Chaird {
                 case "list":
                     return ui.printList(tasks.getList());
                 case "mark":
-                    tasks.mark(cmd.getInd());
+                    tasks.mark(cmd.getIndex());
                     storage.save(tasks.getList());
-                    return ui.mark(tasks.getList().get(cmd.getInd() - 1));
+                    return ui.mark(tasks.getList().get(cmd.getIndex() - 1));
                 case "unmark":
-                    tasks.unmark(cmd.getInd());
+                    tasks.unmark(cmd.getIndex());
                     storage.save(tasks.getList());
-                    return ui.unmark(tasks.getList().get(cmd.getInd() - 1));
+                    return ui.unmark(tasks.getList().get(cmd.getIndex() - 1));
                 case "delete":
-                    Task taskToDelete = tasks.getList().get(cmd.getInd() - 1);
-                    tasks.delete(cmd.getInd());
+                    Task taskToDelete = tasks.getList().get(cmd.getIndex() - 1);
+                    tasks.delete(cmd.getIndex());
                     return ui.delete(taskToDelete, tasks.size());
                 case "todo":
                     Task newTodo = new Todo(cmd.getDesc());
