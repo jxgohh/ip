@@ -1,10 +1,7 @@
 package chaird.storage;
 
 import chaird.exception.ChairdException;
-import chaird.task.Deadline;
-import chaird.task.Event;
-import chaird.task.Task;
-import chaird.task.Todo;
+import chaird.task.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -96,16 +93,19 @@ public class Storage {
         boolean isDone = completed.equals("1");
         String description = parts[2].trim();
 
-        if (eventType.equals("T")) {
-            return new Todo(description, isDone);
-        } else if (eventType.equals("D")) {
-            String[] descParts = description.split("\\|", 2);
-            return new Deadline(descParts[0].trim(), isDone, descParts[1].trim());
-        } else if (eventType.equals("E")) {
-            String[] descParts = description.split("\\|", 2);
-            return new Event(descParts[0].trim(), isDone, descParts[1].trim());
+        switch (eventType) {
+            case "T":
+                return new Todo(description, isDone);
+            case "D":
+                String[] deadlineParts = description.split("\\|", 2);
+                return new Deadline(deadlineParts[0].trim(), isDone, deadlineParts[1].trim());
+            case "E":
+                String[] eventParts = description.split("\\|", 2);
+                return new Event(eventParts[0].trim(), isDone, eventParts[1].trim());
+            case "N":
+                return new Note(description);
+            default:
+                return null;
         }
-
-        return null;
     }
 }

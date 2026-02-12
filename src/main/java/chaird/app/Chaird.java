@@ -7,10 +7,7 @@ import chaird.exception.ChairdException;
 import chaird.parser.Command;
 import chaird.parser.Parser;
 import chaird.storage.Storage;
-import chaird.task.Deadline;
-import chaird.task.Task;
-import chaird.task.Event;
-import chaird.task.Todo;
+import chaird.task.*;
 import chaird.tasklist.TaskList;
 import chaird.ui.Ui;
 
@@ -76,6 +73,11 @@ public class Chaird {
                     tasks.add(newEvent);
                     storage.save(tasks.getList());
                     return ui.add(newEvent, tasks.size());
+                case "note":
+                    Task newNote = new Note(cmd.getDesc());
+                    tasks.add(newNote);
+                    storage.save(tasks.getList());
+                    return ui.addNote(newNote, tasks.size());
                 case "find":
                     ArrayList<Task> matchingTasks = tasks.findTasks(cmd.getDesc());
                     return ui.find(matchingTasks);

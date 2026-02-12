@@ -94,6 +94,19 @@ public class Ui {
     }
 
     /**
+     * Prints confirmation messages when a new note is added.
+     *
+     * @param task the note that was added
+     * @param size the size of the list after the note is added
+     * @return confirmation message of adding note
+     */
+    public String addNote(Task task, int size) {
+        return "Got it. I've added this note: \n"
+                + "    " + task + "\n"
+                + "Now you have " + size + " tasks in the list";
+    }
+
+    /**
      * Prints all tasks in the search tasklist.
      *
      * @param tasks the ArrayList of all matching tasks

@@ -1,6 +1,7 @@
 package chaird.tasklist;
 
 import chaird.exception.ChairdException;
+import chaird.task.Note;
 import chaird.task.Task;
 
 import java.lang.reflect.Array;
@@ -54,6 +55,9 @@ public class TaskList {
      */
     public void mark(int ind) throws ChairdException {
         checkValidIndex(ind);
+        if (tasks.get(ind - 1) instanceof Note) {
+            throw new ChairdException("Oops you cannot mark a Note");
+        }
         tasks.get(ind - 1).mark();
     }
 
@@ -65,6 +69,9 @@ public class TaskList {
      */
     public void unmark(int ind) throws ChairdException {
         checkValidIndex(ind);
+        if (tasks.get(ind - 1) instanceof Note) {
+            throw new ChairdException("Oops you cannot unmark a Note");
+        }
         tasks.get(ind - 1).unmark();
     }
 

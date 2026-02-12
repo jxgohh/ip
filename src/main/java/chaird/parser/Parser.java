@@ -29,7 +29,7 @@ public class Parser {
             case "unmark":
             case "delete":
                 if (!splitter.hasNextInt()) {
-                    throw new ChairdException("Please provide a valid task number (int) to delete");
+                    throw new ChairdException("Please provide a valid task number (int)");
                 }
                 int ind = splitter.nextInt();
                 return new Command(action, ind, null);
@@ -37,6 +37,12 @@ public class Parser {
             case "todo":
                 if (!splitter.hasNextLine()) {
                     throw new ChairdException("Please include a task description");
+                }
+                return new Command(action, -1, splitter.nextLine().trim());
+
+            case "note":
+                if (!splitter.hasNextLine()) {
+                    throw new ChairdException("Please include a note description");
                 }
                 return new Command(action, -1, splitter.nextLine().trim());
 
