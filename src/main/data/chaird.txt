@@ -1,8 +1,3 @@
-D | 0 | tmr | 2020-03-11 1800
-T | 0 | read book
-D | 0 | return book | 2020-11-12 1700
-E | 0 | boo | 2025-01-01 2359
-D | 0 | cs2103 | 2025-03-03 1900
-D | 0 | tmr | 2025-06-06 1900
-N | 0 | pretty funny
-N | 0 | lol
+D | 1 | homework | 2025-02-20 1800
+N | 0 | complete cs2103t
+T | 0 | cs2103t ip task
