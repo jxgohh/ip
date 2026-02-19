@@ -1,0 +1,33 @@
+/* This css file is written with help from chatgpt */
+.root {
+    -fx-background-image: url("../images/background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+#scrollPane {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+#dialogContainer {
+    -fx-background-color: transparent;
+    -fx-spacing: 12px;
+    -fx-padding: 10px 10px 0 10px;
+}
+
+#userInput {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 10;
+}
+
+#sendButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
