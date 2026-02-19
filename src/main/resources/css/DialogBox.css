@@ -1,0 +1,43 @@
+/* This CSS files is written with the help of chatgpt */
+/* Base dialog container */
+.dialog-box {
+    -fx-padding: 12px 16px;
+    -fx-spacing: 12px;
+    -fx-background-radius: 20px 20px 20px 0;  /* Rounded, pointed tail */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 12, 0, 2, 4);
+}
+
+/* User bubble (right, blue, tail left) */
+.user-dialog {
+    -fx-background-color: linear-gradient(to right, #2196F3 0%, #21CBF3 100%);
+    -fx-background-radius: 20px 20px 0 20px;  /* Tail on left */
+    -fx-text-fill: white;
+    -fx-font-weight: 500;
+}
+
+/* Bot bubble (left, gray, tail right) */
+.chaird-dialog {
+    -fx-background-color: linear-gradient(to left, #F0F0F0 0%, #E0E0E0 100%);
+    -fx-background-radius: 20px 20px 20px 0;   /* Tail on right */
+    -fx-text-fill: #333;
+}
+
+/* Tail pseudo-elements via background positioning */
+.dialog-box:user-dialog {
+    -fx-background-insets: 0 -10 0 0, 0 0 0 0;  /* Left tail */
+}
+
+.dialog-box:chaird-dialog {
+    -fx-background-insets: 0 0 0 -10, 0 0 0 0;  /* Right tail */
+}
+
+/* Label text styling */
+.dialog .label {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+
+/* Avatar glow */
+.dialog-box .image-view {
+    -fx-effect: innershadow(three-pass-box, rgba(255,255,255,0.8), 4, 0, 0, 0);
+}
