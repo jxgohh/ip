@@ -4,7 +4,7 @@
 
 > Chaird is your JavaFX-powered task manager with a chat-style interface for __tracking tasks and taking notes.__
 
-## Feature list :laughing:
+## Feature list
 
 - `todo` - Quick tasks (no deadlines)
 - `deadline` - Tasks with due dates  
@@ -21,15 +21,12 @@
 
 use `todo` before typing in a task to create a todo task in Chaird
 
-**example usage:**
+**Examples:**   
 
 ```
 todo homework
 todo geography homework
 ```
-
-> [!WARNING]
-> todo tasks do not have a deadline associated with them. Do not type in a date it will be display __only__ as text.
 
 ## Adding deadline tasks
 
@@ -42,7 +39,7 @@ deadline homework /by 2026-09-05 1759
 deadline cs2103t ip /by 2026-02-20 1600
 ```
 
-> [!WARNING]
+> 📝 **NOTE** 
 > Please input the date for deadline tasks following the format strictly. 
 
 ## Adding event tasks
@@ -65,7 +62,7 @@ Use `note` before typing in a note
 note remember to redo quiz
 ```
 
-> [!IMPORTANT]
+> 📝 **NOTE** 
 > Take note that notes cannot be marked or unmarked
 
 ## Lists
@@ -79,8 +76,6 @@ Type `mark` followed by the number aassociated to the task
 ```
 mark 1 (marking task 1)
 ```
-> [!TIP]
-> Use the `list` command to view the task numbers
 
 ## Unmarking tasks
 
@@ -101,7 +96,7 @@ Type `delete` followed by the number aassociated to the task
 delete 2
 ```
 
-> [!CAUTION]
+> ⚠️ **CAUTION** 
 > Do use the `list` command to see the new tasks numbers after every delete to avoid confusion
 
 
@@ -115,6 +110,7 @@ Use `find` + keyword you wish to search
 find homework
 find CS2103T
 ```
+
 ## Closing the aapplication
 
 Type `bye` to exit the application

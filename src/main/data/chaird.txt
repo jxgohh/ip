@@ -1,3 +1,0 @@
-D | 1 | homework | 2025-02-20 1800
-N | 0 | complete cs2103t
-T | 0 | cs2103t ip task
