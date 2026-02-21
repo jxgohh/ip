@@ -8,6 +8,7 @@ import chaird.exception.ChairdException;
  */
 public class Event extends Task{
     protected Date from;
+    protected Date to;
 
     /**
      * Constructs a new Task class with the description and date.
@@ -17,9 +18,10 @@ public class Event extends Task{
      * @param from the date string in appropriate format
      * @throws ChairdException if the due date string is invalid
      */
-    public Event(String description, String from) throws ChairdException {
+    public Event(String description, String from, String to) throws ChairdException {
         super(description);
         this.from = new Date(from);
+        this.to = new Date(to);
     }
     /**
      * Constructs a new Task class with the description and date.
@@ -30,9 +32,10 @@ public class Event extends Task{
      * @param from the date string in appropriate format
      * @throws ChairdException if the due date string is invalid
      */
-    public Event(String description, boolean isDone, String from) throws ChairdException{
+    public Event(String description, boolean isDone, String from, String to) throws ChairdException{
         super(description, isDone);
         this.from = new Date(from);
+        this.to = new Date(to);
     }
 
     public Date getFrom() {
@@ -41,11 +44,13 @@ public class Event extends Task{
 
     @Override
     public String storageLine() {
-        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | " + this.from.storageLineStr();
+        return "E | " + (this.isDone ? "1" : "0") + " | " + this.description + " | "
+                + this.from.storageLineStr() +  " | "  + this.to.storageLineStr();
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + ")";
+        return "[E]" + super.toString() + " (from: " + from
+            + " to: " + to + ")";
     }
 }

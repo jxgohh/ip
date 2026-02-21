@@ -99,6 +99,10 @@ public class TaskList {
         return tasks;
     }
 
+    /**
+     * Checks if entered index is valid, can be accessed in the list
+     *
+     */
     private void checkValidIndex(int ind) throws ChairdException {
         if (ind <= 0 || ind > tasks.size()) {
             throw new ChairdException("Task index " + ind + " is invalid!");

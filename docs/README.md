@@ -85,9 +85,6 @@ Type `unmark` followed by the number aassociated to the task
 unmark 1 (marking task 1)
 ```
 
-> [!TIP]
-> Similar to mark, use `list`
-
 ## Deleting tasks
 
 Type `delete` followed by the number aassociated to the task

@@ -1,5 +1,9 @@
 package chaird.task;
-
+/**
+ * Represents a note without a specific date or time.
+ * Extends the base Task class.
+ *
+ */
 public class Note extends Task {
     public Note(String description) {
         super(description, false);

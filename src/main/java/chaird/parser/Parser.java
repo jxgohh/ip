@@ -73,12 +73,20 @@ public class Parser {
                 }
                 String task = splitter.nextLine().trim();
                 String[] parts = task.split("/from", 2);
-                String description = parts[0].trim();
-                String time = parts.length > 1 ? parts[1].trim() : "";
+                String time = parts.length > 1 ? parts[0].trim() : "";
+                String[] partFromAndTo = parts[1].split("/to", 2);
                 if (time.isEmpty()) {
-                    throw new ChairdException("Hey you don't have a valid time for the event! Use (name)/from(time)!");
+                    throw new ChairdException("Hey you don't have a valid time for the event! " +
+                            "Use (name)/from(time)/to(time)!");
                 }
-                return new Command(action, -1, description, time);
+                String description = parts[0].trim();
+                String timeFrom = partFromAndTo[0].trim();
+                String timeTo = partFromAndTo.length > 1 ? partFromAndTo[1].trim() : "";
+                if (timeTo.isEmpty()) {
+                    throw new ChairdException("Hey you don't have a valid time for the end of the event! " +
+                            "Use (name)/from(time)/to(time)!");
+                }
+                return new Command(action, -1, description, timeFrom, timeTo);
             }
 
             default:

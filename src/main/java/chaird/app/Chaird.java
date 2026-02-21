@@ -64,12 +64,12 @@ public class Chaird {
                     storage.save(tasks.getList());
                     return ui.add(newTodo, tasks.size());
                 case "deadline":
-                    Task newDeadline = new Deadline(cmd.getDesc(), cmd.getDate());
+                    Task newDeadline = new Deadline(cmd.getDesc(), cmd.getDateStart());
                     tasks.add(newDeadline);
                     storage.save(tasks.getList());
                     return ui.add(newDeadline, tasks.size());
                 case "event":
-                    Task newEvent = new Event(cmd.getDesc(), cmd.getDate());
+                    Task newEvent = new Event(cmd.getDesc(), cmd.getDateStart(), cmd.getDateEnd());
                     tasks.add(newEvent);
                     storage.save(tasks.getList());
                     return ui.add(newEvent, tasks.size());

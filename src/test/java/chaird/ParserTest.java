@@ -16,10 +16,11 @@ public class ParserTest {
         assertEquals("todo", cmd.getAction());
         assertEquals("read book", cmd.getDesc());
 
-        cmd = Parser.parseLine("event restaurant date /from 2025-02-14 1200");
+        cmd = Parser.parseLine("event restaurant date /from 2025-02-14 1200 /to 2025-02-14 1600");
         assertEquals("event", cmd.getAction());
         assertEquals("restaurant date", cmd.getDesc());
-        assertEquals("2025-02-14 1200", cmd.getDate());
+        assertEquals("2025-02-14 1200", cmd.getDateStart());
+        assertEquals("2025-02-14 1600", cmd.getDateEnd());
 
         cmd = Parser.parseLine("mark 3");
         assertEquals("mark", cmd.getAction());

@@ -100,8 +100,8 @@ public class Storage {
                 String[] deadlineParts = description.split("\\|", 2);
                 return new Deadline(deadlineParts[0].trim(), isDone, deadlineParts[1].trim());
             case "E":
-                String[] eventParts = description.split("\\|", 2);
-                return new Event(eventParts[0].trim(), isDone, eventParts[1].trim());
+                String[] eventParts = description.split("\\|", 3);
+                return new Event(eventParts[0].trim(), isDone, eventParts[1].trim(), eventParts[2].trim());
             case "N":
                 return new Note(description);
             default:

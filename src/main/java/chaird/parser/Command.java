@@ -5,7 +5,7 @@ package chaird.parser;
  */
 public class Command {
     private final String action, desc;
-    private String date = null;
+    private String dateStart, dateEnd = null;
     private final int index;
 
     public Command(String action, int index, String desc) {
@@ -17,7 +17,15 @@ public class Command {
         this.index = ind;
         this.action = action;
         this.desc = desc;
-        this.date = date;
+        this.dateStart = date;
+    }
+
+    public Command(String action, int ind, String desc, String dateStart, String dateEnd) {
+        this.index = ind;
+        this.action = action;
+        this.desc = desc;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
     public int getIndex() {
@@ -32,7 +40,10 @@ public class Command {
         return desc;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateStart() {
+        return dateStart;
+    }
+    public String getDateEnd() {
+        return dateEnd;
     }
 }
