@@ -64,7 +64,8 @@ public class StorageTest {
         }
         ArrayList<Task> tasks = storage.load();
 
-        boolean isDeleted = new File("test_corrupt.txt").delete();
+        boolean isDeleted = new File("corrupt.txt").delete();
+        assertTrue(isDeleted);
         assertTrue(tasks.isEmpty());
     }
 
