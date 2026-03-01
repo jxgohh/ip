@@ -34,6 +34,11 @@ public class DialogBox extends HBox {
             e.printStackTrace();
         }
 
+        /* This code block is written with ChatGPT */
+        if (text.startsWith("[ERROR]")) {
+            dialog.setTextFill(javafx.scene.paint.Color.RED);
+        }
+
         dialog.setText(text);
         displayPicture.setImage(img);
     }

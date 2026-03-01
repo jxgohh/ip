@@ -133,6 +133,6 @@ public class Ui {
      * @return error message
      */
     public String printError(String message) {
-        return message;
+        return "[ERROR] " + message;
     }
 }

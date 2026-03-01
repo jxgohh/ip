@@ -40,7 +40,7 @@ public class Parser {
                 }
                 String task = splitter.nextLine().trim();
                 if (task.contains("|")) {
-                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)");
                 }
                 return new Command(action, -1, task);
 
@@ -50,7 +50,7 @@ public class Parser {
                 }
                 String note = splitter.nextLine().trim();
                 if (note.contains("|")) {
-                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)");
                 }
                 return new Command(action, -1, note);
 
@@ -65,11 +65,11 @@ public class Parser {
                 if (!splitter.hasNextLine()) {
                     throw new ChairdException("Please include a task description");
                 }
-                String task = splitter.nextLine().trim();
-                if (task.contains("|")) {
+                String deadlineTask = splitter.nextLine().trim();
+                if (deadlineTask.contains("|")) {
                     throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)");
                 }
-                String[] parts = task.split("/by", 2);
+                String[] parts = deadlineTask.split("/by", 2);
                 String description = parts[0].trim();
                 String time = parts.length > 1 ? parts[1].trim() : "";
                 if (time.isEmpty()) {
@@ -80,19 +80,19 @@ public class Parser {
 
             case "event": {
                 if (!splitter.hasNextLine()) {
-                    throw new ChairdException("Please include a task description");
+                    throw new ChairdException("Please include a eventTask description");
                 }
-                String task = splitter.nextLine().trim();
-                if (task.contains("|")) {
-                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                String eventTask = splitter.nextLine().trim();
+                if (eventTask.contains("|")) {
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)");
                 }
-                String[] parts = task.split("/from", 2);
+                String[] parts = eventTask.split("/from", 2);
                 String time = parts.length > 1 ? parts[0].trim() : "";
-                String[] partFromAndTo = parts[1].split("/to", 2);
                 if (time.isEmpty()) {
                     throw new ChairdException("Hey you don't have a valid time for the event! " +
                             "Use (name)/from(time)/to(time)!");
                 }
+                String[] partFromAndTo = parts[1].split("/to", 2);
                 String description = parts[0].trim();
                 String timeFrom = partFromAndTo[0].trim();
                 String timeTo = partFromAndTo.length > 1 ? partFromAndTo[1].trim() : "";
