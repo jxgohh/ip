@@ -38,13 +38,21 @@ public class Parser {
                 if (!splitter.hasNextLine()) {
                     throw new ChairdException("Please include a task description");
                 }
-                return new Command(action, -1, splitter.nextLine().trim());
+                String task = splitter.nextLine().trim();
+                if (task.contains("|")) {
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                }
+                return new Command(action, -1, task);
 
             case "note":
                 if (!splitter.hasNextLine()) {
                     throw new ChairdException("Please include a note description");
                 }
-                return new Command(action, -1, splitter.nextLine().trim());
+                String note = splitter.nextLine().trim();
+                if (note.contains("|")) {
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                }
+                return new Command(action, -1, note);
 
             case "find":
                 if (!splitter.hasNextLine()) {
@@ -58,6 +66,9 @@ public class Parser {
                     throw new ChairdException("Please include a task description");
                 }
                 String task = splitter.nextLine().trim();
+                if (task.contains("|")) {
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)");
+                }
                 String[] parts = task.split("/by", 2);
                 String description = parts[0].trim();
                 String time = parts.length > 1 ? parts[1].trim() : "";
@@ -72,6 +83,9 @@ public class Parser {
                     throw new ChairdException("Please include a task description");
                 }
                 String task = splitter.nextLine().trim();
+                if (task.contains("|")) {
+                    throw new ChairdException("Oops we detected a \"|\". Please do not use this as it is reserved for storage :)"d);
+                }
                 String[] parts = task.split("/from", 2);
                 String time = parts.length > 1 ? parts[0].trim() : "";
                 String[] partFromAndTo = parts[1].split("/to", 2);
