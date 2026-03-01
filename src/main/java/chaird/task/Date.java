@@ -25,14 +25,24 @@ public class Date {
     }
 
     private LocalDateTime convertStrToLocalDateTime(String str) throws ChairdException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
-
-        try {
-            return LocalDateTime.parse(str, formatter);
-        } catch (DateTimeParseException e) {
-            throw new ChairdException("Hey your date is invalid, please input a valid date " +
-                    "in this format (yyyy-mm-dd HHmm) Example: 2019-07-11 1700");
+        DateTimeFormatter[] formatters = {
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"),
+                DateTimeFormatter.ofPattern("yyyy MM dd HHmm"),
+                DateTimeFormatter.ofPattern("dd MM yyyy HHmm")
+        };
+        for (DateTimeFormatter formatter: formatters) {
+            try {
+                return LocalDateTime.parse(str, formatter);
+            } catch (DateTimeParseException e) {
+                // ignore
+            }
         }
+        throw new ChairdException("Hey your date is invalid, please input a valid date " +
+                "in this format (yyyy-mm-dd HHmm) Example: 2019-07-11 1700 " +
+                "OR (dd-mm-yyyy HHmm) Example: 11-07-2019 1700 " +
+                "OR the any of the above without \"-\" characters"
+        );
     }
 
     /**
